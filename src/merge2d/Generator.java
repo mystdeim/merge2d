@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.sun.xml.internal.messaging.saaj.soap.ver1_1.Header1_1Impl;
-
 public class Generator {
 	
 	public List<Point> uniformly(int count, double width, double height) {
@@ -36,7 +34,6 @@ public class Generator {
 
 		double min_side = Math.min(width, height);
 		
-		
 		for (int c=0; c<count; c++) {
 			double angle = rand.nextDouble() * Math.PI * 2;
 			double length = rand.nextDouble() * min_side / (2*delta_count + 1);
@@ -49,7 +46,6 @@ public class Generator {
 			double y = y_c + length * Math.sin(angle);
 			
 			list.add(new Point(severity, x, y));
-//			list.add(new Point(severity, x_c, y_c));
 		}
 		
 		return list;
