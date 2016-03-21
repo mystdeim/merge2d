@@ -3,6 +3,7 @@ package merge2d.app;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -25,18 +26,15 @@ import merge2d.Point;
 
 public class ApplicationController implements Initializable {
 	
-	private static final int 	DEFAULT_CLUSTERS = 5;
-	private static final int 	DEFAULT_COUNT = 100;
-	
 	// FXML Properties
 	// -----------------------------------------------------------------------------------------------------------------
 	@FXML private Button btnCreate;
 	@FXML private Button btnClear;
 	@FXML private StackPane drawingAnchor;
-	@FXML private Spinner<Number> spinnerCount;
-	@FXML private IntegerSpinnerValueFactory countValueFactory;
-	@FXML private Spinner<Number> spinnerClusters;
-	@FXML private IntegerSpinnerValueFactory clustersValueFactory;
+	@FXML private Spinner<Integer> spinnerCount;
+	private IntegerSpinnerValueFactory countValueFactory;
+	@FXML private Spinner<Integer> spinnerClusters;
+	private IntegerSpinnerValueFactory clustersValueFactory;
 	
 	@FXML private Button btnMerge;
 	@FXML private Button btnUnmerge;
@@ -77,6 +75,38 @@ public class ApplicationController implements Initializable {
 	}
 	
 	@FXML 
+	private void onMerge1(ActionEvent event) {
+		List<PointNode> first_list = new ArrayList<>();
+		for (Point p : listPoints) {
+			PointNode pn = new PointNode();
+			pn.setLayoutX(p.getX());
+			pn.setLayoutY(p.getY());
+			pn.addCount(p.getSeverity(), 1);
+			first_list.add(pn);
+		}
+		merging.merge1(first_list);		
+		setNodes(first_list);
+		
+		draw();
+	}
+	
+	@FXML 
+	private void onMerge2(ActionEvent event) {
+		List<PointNode> first_list = new LinkedList<>();
+		for (Point p : listPoints) {
+			PointNode pn = new PointNode();
+			pn.setLayoutX(p.getX());
+			pn.setLayoutY(p.getY());
+			pn.addCount(p.getSeverity(), 1);
+			first_list.add(pn);
+		}
+		merging.merge2(first_list);		
+		setNodes(first_list);
+		
+		draw();
+	}
+	
+	@FXML 
 	private void onMergeClear(ActionEvent event) {
 		Platform.runLater(() -> {
 			nodesPane.getChildren().clear();
@@ -87,11 +117,15 @@ public class ApplicationController implements Initializable {
 	// -----------------------------------------------------------------------------------------------------------------
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		clustersValueFactory.setValue(DEFAULT_CLUSTERS);
-//		spinnerClusters.setValueFactory(clustersValueFactory);
-		countValueFactory.setValue(DEFAULT_COUNT);
 		
-		//
+		// Spinners
+		clustersValueFactory = new IntegerSpinnerValueFactory(1, 100, 1);
+		spinnerClusters.setValueFactory(clustersValueFactory);
+		
+		countValueFactory = new IntegerSpinnerValueFactory(1, 1_000_000, 100_000);
+		spinnerCount.setValueFactory(countValueFactory);
+		
+		// Canvas
 		drawingAnchor.getChildren().add(drawingField);
 		drawingField.widthProperty().bind(drawingAnchor.widthProperty());
         drawingField.heightProperty().bind(drawingAnchor.heightProperty());
@@ -100,8 +134,12 @@ public class ApplicationController implements Initializable {
         drawingField.widthProperty().addListener(evt -> changeSize());
         drawingField.heightProperty().addListener(evt -> changeSize());		
         
-        //
+        // Nodes pane
+        nodesPane.setManaged(false); 
         drawingAnchor.getChildren().add(nodesPane);
+        
+//        nodesPane.setLayoutX(0);
+//        nodesPane.setLayoutY(0);
 	}
 	
 	private void changeSize() {
@@ -119,8 +157,8 @@ public class ApplicationController implements Initializable {
 
 	private ResizableCanvas drawingField = new ResizableCanvas();
 //	@FXML
-//	private Group nodesPane;
 	private Group nodesPane = new Group();
+//	private Parent nodesPane = new Pane();
 	private List<Point> listPoints = new ArrayList<>();
 	private Generator generator = new Generator();
 	private Merging merging = new Merging();

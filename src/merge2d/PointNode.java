@@ -55,7 +55,8 @@ public class PointNode extends Parent {
 		// Text
         initEventCountText();
         
-        eventCount.setLayoutY(font_h / 3.0);
+//        eventCount.setLayoutY(font_h / 3.0);
+        eventCount.setLayoutY(5);
         
         double r = (Helpers.rank(getCount()) * rank_w) / 2.0;
         eventCount.setLayoutX(-r);
@@ -108,7 +109,6 @@ public class PointNode extends Parent {
 		return Math.sqrt(
 				Math.pow(getLayoutX() - s.getLayoutX(), 2) + Math.pow(getLayoutY() - s.getLayoutY(), 
 				2)) < range;
-//		return false;
 	}
 	
 	public void merge(PointNode node) {
@@ -137,7 +137,6 @@ public class PointNode extends Parent {
 
 	private Text eventCount;
 	private Font font;
-	private double font_h;
 	
 	// Helpers
 	// -----------------------------------------------------------------------------------------------------------------
