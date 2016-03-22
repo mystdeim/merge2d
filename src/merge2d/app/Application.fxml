@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="merge2d.app.ApplicationController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="758.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="merge2d.app.ApplicationController">
    <center>
       <StackPane fx:id="drawingAnchor" minHeight="0.0" minWidth="0.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
@@ -51,9 +51,9 @@
                   </GridPane>
                </content>
             </TitledPane>
-            <TitledPane prefHeight="361.0" prefWidth="215.0" text="Merging">
+            <TitledPane prefHeight="462.0" prefWidth="215.0" text="Merging">
                <content>
-                  <GridPane hgap="10.0" vgap="5.0">
+                  <GridPane hgap="10.0" prefHeight="397.0" prefWidth="213.0" vgap="5.0">
                     <columnConstraints>
                       <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -64,19 +64,27 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
                     </rowConstraints>
                      <children>
                         <Button fx:id="btnMerge" mnemonicParsing="false" onAction="#onMerge" text="Merge" GridPane.rowIndex="2" />
-                        <Button fx:id="btnUnmerge" mnemonicParsing="false" text="Unmerge" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <Button fx:id="btnMergeClear" mnemonicParsing="false" onAction="#onMergeClear" text="Clear" GridPane.rowIndex="5" />
+                        <Button fx:id="btnUnmerge" mnemonicParsing="false" text="Unmerge" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <Button fx:id="btnMergeClear" mnemonicParsing="false" onAction="#onMergeClear" text="Clear" GridPane.rowIndex="9" />
                         <Label text="Steps:" />
                         <Label fx:id="lblStepsValue" text="0" GridPane.columnIndex="1" />
                         <Label text="Time(ms):" GridPane.rowIndex="1" />
                         <Label fx:id="lblTimeValue" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Button mnemonicParsing="false" onAction="#onMerge1" text="Merge 1" GridPane.rowIndex="3" />
                         <Button mnemonicParsing="false" onAction="#onMerge2" text="Merge 2" GridPane.rowIndex="4" />
+                        <Button mnemonicParsing="false" onAction="#onMerge3" text="Merge 3" GridPane.rowIndex="5" />
+                        <Button mnemonicParsing="false" onAction="#onMerge4" text="Merge 4" GridPane.rowIndex="6" />
+                        <Button mnemonicParsing="false" onAction="#onMerge4p" text="Merge 4(p)" GridPane.rowIndex="7" />
+                        <Button mnemonicParsing="false" onAction="#onMergeP" text="Merge P" GridPane.rowIndex="8" />
                      </children>
                   </GridPane>
                </content>

@@ -107,6 +107,70 @@ public class ApplicationController implements Initializable {
 	}
 	
 	@FXML 
+	private void onMerge3(ActionEvent event) {
+		List<PointNode> first_list = new ArrayList<>();
+		for (Point p : listPoints) {
+			PointNode pn = new PointNode();
+			pn.setLayoutX(p.getX());
+			pn.setLayoutY(p.getY());
+			pn.addCount(p.getSeverity(), 1);
+			first_list.add(pn);
+		}
+		merging.merge3(first_list);		
+		setNodes(first_list);
+		
+		draw();
+	}
+	
+	@FXML 
+	private void onMerge4(ActionEvent event) {
+		List<PointNode> first_list = new LinkedList<>();
+		for (Point p : listPoints) {
+			PointNode pn = new PointNode();
+			pn.setLayoutX(p.getX());
+			pn.setLayoutY(p.getY());
+			pn.addCount(p.getSeverity(), 1);
+			first_list.add(pn);
+		}
+		merging.merge4(first_list);		
+		setNodes(first_list);
+		
+		draw();
+	}
+	
+	@FXML 
+	private void onMerge4p(ActionEvent event) {
+		List<PointNode> first_list = new LinkedList<>();
+		for (Point p : listPoints) {
+			PointNode pn = new PointNode();
+			pn.setLayoutX(p.getX());
+			pn.setLayoutY(p.getY());
+			pn.addCount(p.getSeverity(), 1);
+			first_list.add(pn);
+		}
+		merging.merge4p(first_list);		
+		setNodes(first_list);
+		
+		draw();
+	}
+	
+	@FXML 
+	private void onMergeP(ActionEvent event) {
+		List<PointNode> first_list = new LinkedList<>();
+		for (Point p : listPoints) {
+			PointNode pn = new PointNode();
+			pn.setLayoutX(p.getX());
+			pn.setLayoutY(p.getY());
+			pn.addCount(p.getSeverity(), 1);
+			first_list.add(pn);
+		}
+		merging.mergeParallel(first_list);		
+		setNodes(first_list);
+		
+		draw();
+	}
+	
+	@FXML 
 	private void onMergeClear(ActionEvent event) {
 		Platform.runLater(() -> {
 			nodesPane.getChildren().clear();

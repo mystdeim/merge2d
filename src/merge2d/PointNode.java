@@ -47,6 +47,10 @@ public class PointNode extends Parent {
 		if (map.containsKey(severity)) return map.get(severity).intValue();
 		else return 0;
 	}
+	
+	public double getR() {
+		return Math.sqrt(getLayoutX()*getLayoutX() + getLayoutY()*getLayoutY());
+	}
 		
 	public void initShape() {
 		getChildren().clear();
